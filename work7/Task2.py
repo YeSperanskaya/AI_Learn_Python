@@ -4,9 +4,9 @@
 
 from PIL import Image
 
-from skimage.filters import gaussian
-from skimage import io
+
 import numpy as np
+import cv2
 
 
 # изменить размер изображения
@@ -26,13 +26,12 @@ def convert_to_black_white(image_path):
 
 # заблюрить изображение
 def blur_image(image_path):
-    image = io.imread(image_path)
-    blur = gaussian(image, sigma=1, multichannel=True)
-    blur = blur.astype(np.uint8)
-    io.imsave('../resources/blurred_image.png', blur, check_contrast=False)
+    image = cv2.imread(image_path)
+    kernel_size = 5
+    blur_mask = np.ones((kernel_size, kernel_size), np.float32) / kernel_size ** 2
+    image = cv2.filter2D(image, -1, blur_mask)
+    cv2.imwrite('../resources/blurred_image.png', image)
     print("blurred_image.png - изображение с эффектом блюр")
-
-
 def start():
     image_path = "../resources/processed_image.png"
     new_width = 300
