@@ -17,4 +17,5 @@ def change_png():
     image.save("../resources/processed_image.png")
     print("Файл успешно обработан!")
 
+
 change_png()
