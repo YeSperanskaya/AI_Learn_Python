@@ -8,6 +8,7 @@ from skimage.filters import gaussian
 from skimage import io
 import numpy as np
 
+
 # изменить размер изображения
 def resize_image(image_path, new_width, new_height):
     image = Image.open(image_path)
