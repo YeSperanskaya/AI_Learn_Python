@@ -7,6 +7,7 @@
 import PIL
 from PIL import Image
 
+# превратить прозрачные пиксели в белые
 def change_png():
     image_path = "../resources/image.png"
     image = Image.open(image_path)
